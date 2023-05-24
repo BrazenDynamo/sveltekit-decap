@@ -1,0 +1,70 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/uploads"
+
+collections:
+  - label: Tags
+    name: tags
+    identifier_field: value
+    folder: /src/collections/tags
+    create: true
+    extension: yml
+    sortable_fields: []
+    fields:
+      - name: value
+
+  - label: Meals
+    name: meals
+    identifier_field: value
+    folder: /src/collections/meals
+    create: true
+    extension: yml
+    sortable_fields: []
+    fields:
+      - name: value
+
+  - label: Ingredients
+    name: ingredients
+    identifier_field: value
+    folder: /src/collections/ingredients
+    create: true
+    extension: yml
+    sortable_fields: []
+    fields:
+      - name: value
+      - label: Meals
+        name: meals
+        widget: relation
+        collection: meals
+        value_field: value
+        display_fields: ["value"]
+        search_fields: ["value"]
+        multiple: true
+        required: false
+
+  - name: posts
+    label: Posts
+    folder: /src/collections/posts
+    create: true
+    publish_mode: editorial_workflow
+    sortable_fields: ['title', 'date', 'updated']
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Excerpt / Summary", name: "excerpt", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Updated", name: "updated", widget: "datetime"}
+      - {label: "Cover Image", name: "coverImage", widget: "image", required: false}
+      - {label: "Cover Width", name: "coverWidth", widget: "number", default: 16, required: false}
+      - {label: "Cover Height", name: "coverHeight", widget: "number", default: 9, required: false}
+      - label: Tags
+        name: tags
+        widget: relation
+        collection: tags
+        value_field: value
+        display_fields: ["value"]
+        search_fields: ["value"]
+        multiple: true
+        required: false
+      - {label: "Body", name: "body", widget: "markdown", editor: true}
