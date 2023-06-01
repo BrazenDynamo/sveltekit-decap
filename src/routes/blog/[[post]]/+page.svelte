@@ -50,9 +50,9 @@ const { PostContent } = data
 		height={coverHeight}
 	/>
 
-	<h1>{ title }</h1>
+	<h1 class="my-4">{ title }</h1>
 	
-	<div class="meta">
+	<div class="text-xs mb-6">
 		<b>Published:</b> {date}
 		<br>
 		<b>Updated:</b> {updated}
@@ -61,15 +61,23 @@ const { PostContent } = data
 	<svelte:component this={PostContent} />
 
 	{#if categories}
-		<aside class="post-footer">
-			<h2>Posted in: </h2>
-			<ul>
+		<aside class="post-footer mt-8">
+			<h3>Posted in:</h3>
+			<ul class="p-0">
 				{#each categories as category}
-					<li>
-						<a href="/blog/category/{category}/">
-							{ category }
-						</a>
-					</li>
+				<li
+					class="
+						inline-block text-xs ml-2
+						first:ml-0
+					"
+				>
+					<a
+						href="/blog/category/{category}/"
+						class="bg-red-300 py-2 px-3 uppercase font-bold"
+					>
+						{ category }
+					</a>
+				</li>
 				{/each}
 			</ul>
 		</aside>

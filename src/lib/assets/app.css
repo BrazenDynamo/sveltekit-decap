@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+form {
+  @apply my-4 mx-0;
+}
+
+label {
+  @apply font-bold inline-block;
+}
+
+fieldset {
+  @apply font-bold inline-block p-0 border-none mt-6;
+}
+
+button,
+input[type="submit"] {
+  @apply text-base py-2 px-4 bg-red-900 rounded-sm mt-4 mx-0 mb-0 block w-max transition-colors text-red-50 font-bold border-2 border-red-900;
+  @apply hover:bg-red-700 focus:bg-red-700;
+}
+
+input {
+  @apply block p-2 border border-red-800 rounded-sm w-full accent-red-500 bg-transparent;
+
+  &[type=radio],
+  &[type=checkbox] {
+    @apply w-auto inline;
+
+    &:not(:checked) + label {
+      @apply font-normal;
+    }
+  }
+
+  &::placeholder {
+    @apply text-red-800 opacity-50;
+  }
+}
+
+img {
+  @apply w-full max-w-full h-auto;
+}
+
+li {
+  @apply mb-1;
+}
+
+:where(h2, h3, h4, h5, h6) {
+  .icon-link {
+    @apply relative;
+
+    &::before {
+      @apply fill-current absolute -left-4 w-4 h-4 top-0 opacity-20;
+      @apply sm:-left-6;
+      content: url('/link.svg');
+      transition: opacity .2s;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+  @apply mb-4 leading-4 font-bold text-red-900;
+}
+
+h1 {
+  @apply text-5xl mb-5 relative overflow-hidden pb-3;
+  @apply after:content-[''] after:h-1 after:bg-red-500 after:w-full after:absolute after:bottom-0;
+  @apply sm:text-5xl;
+  @apply lg:text-6xl;
+
+  &::after {
+    margin-left: -100%;
+  }
+}
+
+h2 {
+  @apply text-4xl;
+}
+
+h3 {
+  @apply text-3xl;
+}
+
+h4 {
+  @apply text-2xl;
+}
+
+h5 {
+  @apply text-xl;
+}
+
+h4 {
+  @apply text-lg;
+}
+
+a {
+  @apply text-red-700 decoration-1 decoration-red-800 hover:text-red-900;
+}
+
+ul {
+  @apply list-[square] pl-6 marker:text-red-500;
+
+  ul {
+    @apply list-disc;
+  }
+}
+
+ol {
+  @apply list-decimal pl-6 marker:text-red-900;
+
+  ol {
+    @apply list-[lower-roman];
+  }
+}
+
+.sr-only {
+  @apply absolute left-[-100vw] opacity-0 w-[1px] h-[1px] overflow-hidden border-none;
+
+	word-wrap: normal;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+}

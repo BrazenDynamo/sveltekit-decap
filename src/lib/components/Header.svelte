@@ -10,12 +10,31 @@
 </script>
 
 
-<header>
-	<a on:click|preventDefault={focusMain} class="skip-to-content-link" href="#main">
+<header
+	class="
+		py-10 px-9 flex justify-between items-center bg-red-300 text-red-950
+
+		sm:justify-center sm:flex-wrap sm:h-auto
+	"
+>
+	<a
+		on:click|preventDefault={focusMain}
+		href="#main"
+		class="
+			absolute -top-24 left-0 p-2 opacity-0 flex justify-center items-center h-12 no-underline
+			focus:translate-y-24 focus:opacity-100
+		"
+	>
 		Skip to main content
 	</a>
 	
-	<a href="/" class="site-title">
+	<a
+		href="/"
+		class="site-title
+			text-4xl leading-none text-center m-0 block font-bold text-red-900
+			sm:w-full sm:text-3xl
+		"
+	>
 		{siteTitle}
 	</a>
 	

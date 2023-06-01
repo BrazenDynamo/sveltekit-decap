@@ -1,7 +1,6 @@
 import { error } from '@sveltejs/kit'
 
 export const load = async ({ url, fetch, params }) => {
-	console.log(params)
 	if (params.post) {
 		// Show post
 		try {	

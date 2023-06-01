@@ -27,5 +27,9 @@ export const navItems = [
 	}, {
 		title: 'Contact',
 		route: '/contact' 
-	},
+	// }, {
+	// 	title: 'Admin',
+	// 	route: `/admin${import.meta.env.DEV ? '.html' : ''}`,
+	// 	rel: 'external'
+	}
 ]

@@ -9,10 +9,16 @@
       "request": "launch",
       "name": "Dev server",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["vite", "dev", "--", "--open"],
+      "runtimeArgs": ["vite", "dev", "--port", "${PORT:-5173}"],
       "skipFiles": [
         "<node_internals>/**"
       ],
+      "serverReadyAction": {
+        "action": "debugWithChrome",
+        "pattern": "Local:\\s+ (https?://.+)",
+        "uriFormat": "%s",
+        "killOnServerStop": false
+      }
     }, 
     {
       "type": "node",
@@ -24,6 +30,12 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
+      "serverReadyAction": {
+        "action": "debugWithChrome",
+        "pattern": "Local:\\s+ (https?://.+)",
+        "uriFormat": "%s",
+        "killOnServerStop": true
+      }
     },
   ]
 }

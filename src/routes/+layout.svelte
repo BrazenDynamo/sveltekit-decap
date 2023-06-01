@@ -1,6 +1,6 @@
 <!-- This is the global layout file; it "wraps" every page on the site. (Or more accurately: is the parent component to every page component on the site.) -->
 <script>
-	import '$lib/assets/scss/global.scss'
+	import '$lib/assets/app.css'
 	import Header from '$lib/components/Header.svelte'
 	import Footer from '$lib/components/Footer.svelte'
 	import { currentPage, isMenuOpen } from '$lib/assets/js/store'
@@ -13,8 +13,6 @@
 	const transitionIn = { delay: 150, duration: 150 }
 	const transitionOut = { duration: 100 }
 
-  export const prerender = true
-	
 	/**
 	 * Updates the global store with the current path. (Used for highlighting 
 	 * the current page in the nav, but could be useful for other purposes.)
@@ -40,7 +38,7 @@
 	The below markup is used on every page in the site. The <slot> is where the page's
 	actual contents will show up.
 -->
-<div class="layout" class:open={$isMenuOpen}>
+<div class="layout grid grid-cols-1 min-h-screen grid-rows-[auto_1fr_auto]" class:open={$isMenuOpen}>
 	<Header />
 	{#key data.path}
 		<main
@@ -48,6 +46,7 @@
 			tabindex="-1"
 			in:fade={transitionIn}
 			out:fade={transitionOut}
+			class="w-full max-w-2xl my-10 mx-auto py-0 px-4"
 		>
 			<slot />
 		</main>
